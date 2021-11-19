@@ -1,5 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
+import axios from "axios";
+
+function onButtonPress() {
+  let movies;
+
+  axios.get("https://testprojectniklas-backend.herokuapp.com/movies")
+  .then(function (response) {
+    // handle success
+    alert(response.data);
+    movies = response.data;
+  })
+  .catch(function (error) {
+    // handle error
+    alert(error);
+  });
+}
 
 function App() {
   return (
@@ -17,6 +33,7 @@ function App() {
         >
           Learn React
         </a>
+        <button onClick={onButtonPress}>get Movies from backend</button>
       </header>
     </div>
   );
